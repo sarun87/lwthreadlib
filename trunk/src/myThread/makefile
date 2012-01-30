@@ -9,7 +9,7 @@ CFLAGS=-g
 LIBSOURCES=futex.c mythread.c
 LIBNAME=libmythread.a
 OBJECTS=$(LIBSOURCES:.c=.o)
-TEST=myThreadTester.c
+TEST=test_program.c
 INCLUDEPATH=./
 LINKFLAG=-L
 INCLUDEFLAG=-I
@@ -18,7 +18,7 @@ all: compile link test
 compile: $(SOURCES)
 	@$(CC) $(LIBCFLAGS) $(LIBSOURCES)
 link: $(OBJECTS)
-	@ar -cvq $(LIBNAME) $(OBJECTS) 
+	@ar -cq $(LIBNAME) $(OBJECTS) 
 test: $(LIBNAME)
 	@$(CC) $(CFLAGS) $(TEST) -lmythread -o runMe $(LINKFLAG)$(INCLUDEPATH) $(INCLUDEFLAG)$(INCLUDEPATH)
 clean: 
